@@ -1,7 +1,3 @@
-# exdocs
-
-> this is service for generate document and upload to cloud
-
 ## About
 
 This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
