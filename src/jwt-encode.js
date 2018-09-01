@@ -2,12 +2,13 @@ var jwt = require('json-web-token');
 
 module.exports = async function(data) {
   const jwtEncode = new Promise((resolve, reject) => {
-    jwt.encode('exdocs-secret', data, function(err, token) {
+    jwt.encode(data.jwtKey, data, function(err, token) {
+      if(err) reject(err)
       resolve(token);
     })
   });
 
   return jwtEncode
   .then(res => { return res })
-  .catch(err => console.log('error', err));
+  .catch(err => { return err });
 }
