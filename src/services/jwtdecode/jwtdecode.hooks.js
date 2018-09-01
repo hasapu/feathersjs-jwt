@@ -1,4 +1,4 @@
-const jwtDencode = require('../../jwt-decode');
+const jwtDecode = require('../../jwt-decode');
 
 module.exports = {
   before: {
@@ -7,7 +7,7 @@ module.exports = {
     get: [],
     create: [
       async (context) => {
-        context.data = await jwtDencode(context.data);
+        context.data = await jwtDecode(context.data);
       }
     ],
     update: [],
@@ -21,7 +21,7 @@ module.exports = {
     get: [],
     create: [
       async (context) => {
-        delete context.result.jwtKey;
+        delete context.data.jwtKey;
         context.result = context.data;
       }
     ],

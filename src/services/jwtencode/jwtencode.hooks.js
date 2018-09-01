@@ -23,7 +23,9 @@ module.exports = {
     create: [
       async (context) => {
         context.result = {};
-        context.result.token = context.data.token
+        if(context.data.token.code===403) {
+          context.result = context.data.token
+        } else context.result.token = context.data.token
       }
     ],
     update: [],

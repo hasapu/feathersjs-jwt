@@ -3,7 +3,10 @@ var jwt = require('json-web-token');
 module.exports = async function(data) {
   const dataDecode = new Promise((resolve, reject) => {
     jwt.decode(data.jwtKey, data.token, function (err, decodedPayload, decodedHeader) {
-      if (err) reject(err);
+      if (err) {
+        err.code = 403;
+        reject(err);
+      }
       resolve(decodedPayload);
     });
   });
